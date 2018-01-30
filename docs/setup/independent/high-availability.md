@@ -490,7 +490,7 @@ Next provision and set up the worker nodes. To do this, you will need to provisi
 1. Reconfigure kube-proxy to access kube-apiserver via the load balancer:
 
     ```shell
-    kubectl get configmap -n kube-system kube-proxy -o yaml > kube-proxy.yaml
+    kubectl get configmap -n kube-system kube-proxy -o yaml > kube-proxy.cm
     sudo sed -i 's#server:.*#server: https://<masterLoadBalancerFQDN>:6443#g' kube-proxy.cm
     kubectl apply -f kube-proxy.cm --force
     # restart all kube-proxy pods to ensure that they load the new configmap
